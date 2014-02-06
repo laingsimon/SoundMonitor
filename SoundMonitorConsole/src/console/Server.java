@@ -14,7 +14,6 @@ public class Server
 		System.out.println("Starting server on port " + _settings.port() + "...");
 		
 		ServerController server = new ServerController(
-				5, 
 				new RandomVolumeInterface(50), 
 				new TestServerControllerEvents(20),
 				new DefaultServerControllerSettings(_settings));

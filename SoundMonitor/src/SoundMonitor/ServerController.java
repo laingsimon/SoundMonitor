@@ -6,20 +6,17 @@ public class ServerController implements IServerController
 {
 	private final ISoundServer _server;
 	private final IVolumeSensor _volume;
-	private final int _burstModeDuration;
 	private final IServerControllerEvents _events;
 	private boolean _run = true;
 	private IServerControllerSettings _settings;
 	
 	public ServerController(
-		int burstModeDuration,				//no of updates to send when in burst mode
-		IVolumeSensor volume,			//volume interface
+		IVolumeSensor volume,				//volume interface
 		IServerControllerEvents events,		//event consumers
 		IServerControllerSettings settings	//settings
 	) throws IOException
 	{
 		_events = events;
-		_burstModeDuration = burstModeDuration;
 		_server = new SoundServer(new ServerControllerServerEvents(events, this), settings);  //communicate with clients
 		_volume = volume;
 		_settings = settings;
@@ -54,7 +51,7 @@ public class ServerController implements IServerController
 					else
 						_events.extendedBurstMode(this, volume, lastVolume);
 					
-					burstMode = _burstModeDuration;
+					burstMode = _settings.burstModeDuration();
 				}
 				
 				_server.send(new DataPacket(volume));

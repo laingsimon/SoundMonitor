@@ -33,4 +33,9 @@ public class DefaultServerControllerSettings implements IServerControllerSetting
 	{
 		_serverSettings.dispose();
 	}
+
+	public int burstModeDuration()
+	{
+		return 10;
+	}
 }
