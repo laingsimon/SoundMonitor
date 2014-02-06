@@ -3,6 +3,7 @@
 	<name>SoundMonitorAndroid</name>
 	<comment></comment>
 	<projects>
+		<project>SoundMonitor</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
